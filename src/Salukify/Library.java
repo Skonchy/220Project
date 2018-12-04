@@ -10,6 +10,36 @@ public class Library {
 	public Library(String label) {
 		root = new Node(label);
 	}
+
+	public Node search(String label){
+		Node result = null;
+		if(root.getLabel() == label){
+			result = root;
+		}
+		else if(!root.children.isEmpty()){
+			int i = 0;
+			while(root.children.elementAt(i).getLabel() != label & i < root.children.size()){
+				i++;
+			}
+			result = root.children.elementAt(i);
+		}
+		return result;
+	}
+
+	public void addChild(Node node) {
+		boolean dupe = false;
+		for(int i = 0; i < this.root.children.size(); i++) {
+			if(this.root.children.elementAt(i).getLabel() == node.getLabel()) {
+				dupe = true;
+			}
+		}
+		if(dupe == false) {
+			this.root.children.add(node);
+		}
+		else {
+			System.out.println("This node already exists");
+		}
+	}//end addChild
 		
 		public static class Node{
 			private Node parent;

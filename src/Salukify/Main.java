@@ -1,7 +1,9 @@
 package Salukify;
 
+
 import Salukify.Playlist;
 import Salukify.Library;
+import java.util.Scanner;
 
 public class Main {
 	static String tempSong;
@@ -25,25 +27,26 @@ public class Main {
 		System.out.println("1) Search for song");
 		System.out.println("2) Add a song");
 		System.out.println("3) Remove a song");
-		System.out.println("4) Expolre");
+		System.out.println("4) Explore");
 		System.out.println("Please enter a number: 0 exits");
 
 		//Needs a scanner for user input!!
-		
-		int choice = -1;
-		while(choice != 0) {
+		Scanner scan = new Scanner(System.in);
+		String choice = scan.next();
+		while(choice != "0") {
 			switch(choice) {
-			case 0:
+			case "0":
 				break;
-			case 1:
+			case "1":
 				//Search
 				System.out.println("What song would you like to search for?");
 				//Set user input to tempSong;
 				//Use search method
 				//DECISION REQUIRED:  might return path or boolean
+				lib.search(scan.next()); 
 				break;
 			
-			case 2 :
+			case "2" :
 				//Add
 				System.out.println("Provide information to add song to library.");
 				//ask for all necessary info to step through 
@@ -53,15 +56,16 @@ public class Main {
 				//NOTE: toUpperCase so no repeats?
 				
 				break;
-			case 3:
+			case "3":
 				//Remove
 				System.out.println("What song would you like to remove from the library?");
-				//User input set to tempSong;
+				//User input set to tempSong; --This should be taken care of in the nesting
 				//search for existence of song Note: use search method?
 				//remove the song
-				tempSong= null;
+				remove(search(scan.next()));
+				
 				break;
-			case 4:
+			case "4":
 				//Exploring
 				//Basically lib.root.getChildren();
 				break;
