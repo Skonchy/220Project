@@ -10,8 +10,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		Library lib = new Library("Library");
 		System.out.println(lib.root.getLabel());
-		lib.root.addChild(new Library.Node("Metal"));
-		lib.root.addChild(new Library.Node("Rock"));
+		lib.root.addChild(new Library.Node("METAL"));
+		lib.root.addChild(new Library.Node("ROCK"));
 		
 		//lib.root.getChildren();
 		menu();
@@ -37,21 +37,33 @@ public class Main {
 				break;
 			case 1:
 				//Search
+				System.out.println("What song would you like to search for?");
+				//Set user input to tempSong;
+				//Use search method
+				//DECISION REQUIRED:  might return path or boolean
 				break;
 			
 			case 2 :
-				//add
+				//Add
+				System.out.println("Provide information to add song to library.");
+				//ask for all necessary info to step through 
+				// adds non-existing nodes to the vector list of that level
+				// enter that node
+				//  steps down and adds next info until done
+				//NOTE: toUpperCase so no repeats?
+				
 				break;
 			case 3:
 				//Remove
 				System.out.println("What song would you like to remove from the library?");
 				//User input set to tempSong;
-				//search for existence of song
+				//search for existence of song Note: use search method?
 				//remove the song
 				tempSong= null;
 				break;
 			case 4:
 				//Exploring
+				//Basically lib.root.getChildren();
 				break;
 				
 			}
