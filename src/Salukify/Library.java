@@ -23,7 +23,7 @@ public class Library {
 			}
 			
 			public void setLabel(String data) {
-				this.label = data;
+				this.label = data.toUpperCase();
 			}
 			public String getLabel() {
 				return this.label;
