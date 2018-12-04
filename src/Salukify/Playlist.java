@@ -1,12 +1,12 @@
 package Salukify;
 import java.util.Vector;
 
-public class Queue<T> {
+public class Playlist<T> {
 	private Vector<T> queue;
-	public Queue() {
+	public Playlist() {
 		queue = new Vector<T>();
 	}
-	public Queue(int initialCapacity) {
+	public Playlist(int initialCapacity) {
 		queue = new Vector<T>(initialCapacity);
 	}
 	

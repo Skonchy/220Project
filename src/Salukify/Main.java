@@ -1,6 +1,6 @@
 package Salukify;
 
-import Salukify.Queue;
+import Salukify.Playlist;
 import Salukify.Library;
 
 public class Main {
@@ -12,8 +12,14 @@ public class Main {
 		lib.root.addChild(new Library.Node("Metal"));
 		lib.root.addChild(new Library.Node("Rock"));
 		
-		lib.root.getChildren();
+		//lib.root.getChildren();
+		
+		
 
+	}
+	
+	public void menu() {
+		
 	}
 
 }
