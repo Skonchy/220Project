@@ -1,3 +1,4 @@
+package Salukify;
 import java.util.Vector;
 
 public class Library {
@@ -22,7 +23,7 @@ public class Library {
 			}
 			
 			public void setLabel(String data) {
-				this.label = data;
+				this.label = data.toUpperCase();
 			}
 			public String getLabel() {
 				return this.label;
