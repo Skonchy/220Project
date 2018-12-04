@@ -7,16 +7,20 @@ import java.util.Scanner;
 
 public class Main {
 	static String tempSong;
+	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Library lib = new Library("Library");
 		System.out.println(lib.root.getLabel());
-		lib.root.addChild(new Library.Node("METAL"));
-		lib.root.addChild(new Library.Node("ROCK"));
+		lib.addChild(new Library.Node("METAL"));
+		lib.addChild(new Library.Node("ROCK"));
 		
-		//lib.root.getChildren();
-		menu();
+		lib.root.getChildren();
+		lib.add("Gucci Gang");
+	
+		//menu();
+		lib.explore();
 		
 
 	}
@@ -31,7 +35,6 @@ public class Main {
 		System.out.println("Please enter a number: 0 exits");
 
 		//Needs a scanner for user input!!
-		Scanner scan = new Scanner(System.in);
 		String choice = scan.next();
 		while(choice != "0") {
 			switch(choice) {
@@ -43,12 +46,15 @@ public class Main {
 				//Set user input to tempSong;
 				//Use search method
 				//DECISION REQUIRED:  might return path or boolean
-				lib.search(scan.next()); 
+				//lib.search(scan.next()); 
 				break;
 			
 			case "2" :
 				//Add
-				System.out.println("Provide information to add song to library.");
+				//lib.add()
+				/*if(root.children.elementAt(i) == scan,next()) {
+					Node currentNode = root.children.elementAt(i)
+				}*/
 				//ask for all necessary info to step through 
 				// adds non-existing nodes to the vector list of that level
 				// enter that node
@@ -62,7 +68,7 @@ public class Main {
 				//User input set to tempSong; --This should be taken care of in the nesting
 				//search for existence of song Note: use search method?
 				//remove the song
-				remove(search(scan.next()));
+				//remove(search(scan.next()));
 				
 				break;
 			case "4":
