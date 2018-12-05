@@ -35,12 +35,13 @@ public class Library {
 		input.close();
 	}//end explore
 	
-	public void add(String label) {
+	public void add() {
 		Scanner input = new Scanner(System.in);
 		Node currentNode = this.root;
 		int i = 0;
+		String genre;
 		System.out.println("What genre is the song you wish to add?");
-		String genre = input.nextLine().toUpperCase();
+		genre = input.nextLine().toUpperCase();
 		if(currentNode.children.isEmpty()) {
 			this.addChild(new Node(genre));
 		}
@@ -54,6 +55,8 @@ public class Library {
 				this.addChild(new Node(genre));
 			}
 		}
+		//Plan set currentNode to the new genre
+		currentNode = search(genre);
 		
 		i = 0;
 		System.out.println("Who is the artist?");
@@ -71,8 +74,46 @@ public class Library {
 				this.addChild(new Node(artist));
 			}
 		}
+		currentNode = search(artist);
+		
+		i = 0;
+		System.out.println("What is the album?");
+		String album = input.nextLine().toUpperCase();
+		if(currentNode.children.isEmpty()) {
+			this.addChild(new Node(album));
+		}
+		while(i < currentNode.children.size() - 1) {
+			if(album == currentNode.children.elementAt(i).getLabel()) {
+				currentNode = currentNode.children.elementAt(i);
+			}else {
+				i++;
+			}
+			if(album != currentNode.children.elementAt(i).getLabel()) {
+				this.addChild(new Node(album));
+			}
+		}
+		
+		currentNode = search(album);
+		
+		i = 0;
+		System.out.println("What is the title of the song");
+		String song = input.nextLine().toUpperCase();
+		if(currentNode.children.isEmpty()) {
+			this.addChild(new Node(song));
+		}
+		while(i < currentNode.children.size() - 1) {
+			if(song == currentNode.children.elementAt(i).getLabel()) {
+				currentNode = currentNode.children.elementAt(i);
+			}else {
+				i++;
+			}
+			if(song != currentNode.children.elementAt(i).getLabel()) {
+				this.addChild(new Node(song));
+			}
+		}
+		
 		input.close();
-	}
+	}//End add
 
 	public Node search(String label){
 		Node result = null;
@@ -147,12 +188,15 @@ public class Library {
 				return "This node has no children";
 			}//end printChildren
 			
-			public Vector getChildren() {
+			public Vector<Node> getChildren() {
 				return this.children;
 			}
 			
 			public Node getParent() {
 				return this.parent;
+			}
+			public void setParent(Node node) {
+				this.parent = node;
 			}
 			
 			public void remove(Node node) {

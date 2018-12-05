@@ -41,13 +41,9 @@ public class Main {
 						System.exit(0);
 					}
 			case 2:
-				System.out.println("Please enter the name of the song you would like to add to the Library.");
-				String add = scan.nextLine();
-				if(!add.equalsIgnoreCase("0")) {
-					lib.add(add);
-				}else {
-					System.exit(0);
-				}
+				System.out.println("Adding to Library..");
+					lib.add();
+					
 				break;
 			case 3:
 				System.out.println("Please enter the name of the song you would like to remove from the Library. 0 to exit.");
@@ -65,8 +61,10 @@ public class Main {
 				System.out.println("Please make a selection within the bounds");
 				break;
 			}
-			System.exit(0);
+			
 		}
+		System.exit(0);
+		 scan.close();
 	}
 	
 	public static int menu() {
