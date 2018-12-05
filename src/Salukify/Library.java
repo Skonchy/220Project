@@ -14,17 +14,21 @@ public class Library {
 	
 	public void explore() {
 		Node currentNode = this.root;
+		String where;
 		Scanner input = new Scanner(System.in);
 		int i = 0;
-		this.root.getChildren();
-		while(!currentNode.children.isEmpty()) {
+		currentNode.getChildren();
+		if(!currentNode.children.isEmpty()) {
+			System.out.println("You are in " + currentNode.getLabel());
+			System.out.println(currentNode.getLabel() + " has children " + currentNode.printChildren());
 			System.out.println("Where would you like to go?");
-		//INPUT
-			while(input.next().toUpperCase() != currentNode.children.elementAt(i).getLabel().toUpperCase()) {
+			where = input.next();
+			while(where.toUpperCase() != currentNode.children.elementAt(i).getLabel().toUpperCase()) {
 				i++;
 			}
-			if(input.next().toUpperCase() == currentNode.children.elementAt(i).getLabel().toUpperCase()) {
+			if(where.toUpperCase() == currentNode.children.elementAt(i).getLabel().toUpperCase()) {
 				currentNode = currentNode.children.elementAt(i);
+				System.out.println("You are in " + currentNode.getLabel());
 			}
 			System.out.println(currentNode.getLabel() + " has no children.");
 		}
@@ -36,36 +40,38 @@ public class Library {
 		Node currentNode = this.root;
 		int i = 0;
 		System.out.println("What genre is the song you wish to add?");
-		String genre = input.next();
+		String genre = input.nextLine().toUpperCase();
 		if(currentNode.children.isEmpty()) {
 			this.addChild(new Node(genre));
 		}
 		while(i < currentNode.children.size() - 1) {
 			if(genre == currentNode.children.elementAt(i).getLabel()) {
 				currentNode = currentNode.children.elementAt(i);
-			}else if(genre != currentNode.children.elementAt(i).getLabel()){
+			}else {
 				i++;
 			}
+			if(genre != currentNode.children.elementAt(i).getLabel()) {
+				this.addChild(new Node(genre));
+			}
 		}
-		if(genre != currentNode.children.elementAt(i).getLabel()) {
-			this.addChild(new Node(input.next()));
-		}
+		
 		i = 0;
 		System.out.println("Who is the artist?");
-		String artist = input.next();
+		String artist = input.nextLine().toUpperCase();
 		if(currentNode.children.isEmpty()) {
 			this.addChild(new Node(artist));
 		}
-		while(i < currentNode.children.size()) {
+		while(i < currentNode.children.size() - 1) {
 			if(artist == currentNode.children.elementAt(i).getLabel()) {
 				currentNode = currentNode.children.elementAt(i);
-			}else if(artist != currentNode.children.elementAt(i).getLabel()){
+			}else {
 				i++;
 			}
+			if(artist != currentNode.children.elementAt(i).getLabel()) {
+				this.addChild(new Node(artist));
+			}
 		}
-		if(artist != currentNode.children.elementAt(i).getLabel()) {
-			this.addChild(new Node(artist));
-		}
+		input.close();
 	}
 
 	public Node search(String label){
@@ -132,19 +138,21 @@ public class Library {
 				}
 			}//end addChild
 			
-			public void getChildren() {
-				if(!children.isEmpty()) {
-					for(int i = 0; i < this.children.size(); i++) {
-						System.out.println(this.children.elementAt(i).getLabel());;
+			public String printChildren() {
+				if(!this.children.isEmpty()) {
+					for(int i = 0; i < this.children.size() - 1; i++) {
+						return this.children.elementAt(i).getLabel();
 					}
 				}
-				if(children.isEmpty()) {
-					System.out.println("This node has no children");
-				}
-			}//end getChildren
+				return "This node has no children";
+			}//end printChildren
 			
-			public Node getParent(Node node) {
-				return node.parent;
+			public Vector getChildren() {
+				return this.children;
+			}
+			
+			public Node getParent() {
+				return this.parent;
 			}
 			
 			public void remove(Node node) {

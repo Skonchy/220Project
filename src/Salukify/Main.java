@@ -3,6 +3,8 @@ package Salukify;
 
 import Salukify.Playlist;
 import Salukify.Library;
+import Salukify.Library.Node;
+
 import java.util.Scanner;
 
 public class Main {
@@ -16,9 +18,9 @@ public class Main {
 		lib.addChild(new Library.Node("METAL"));
 		lib.addChild(new Library.Node("ROCK"));
 		
-		lib.root.getChildren();
-		lib.add("Gucci Gang");
-	
+		System.out.println(lib.root);
+		System.out.println(((Node) lib.root.getChildren().elementAt(1)).getParent());
+		lib.root.printChildren();
 		//menu();
 		lib.explore();
 		
@@ -29,7 +31,7 @@ public class Main {
 		System.out.println("Salukify Menu: ");
 		System.out.println("--------------------");
 		System.out.println("1) Search for song");
-		System.out.println("2) Add a song");
+		System.out.println("2) Add a song"); 
 		System.out.println("3) Remove a song");
 		System.out.println("4) Explore");
 		System.out.println("Please enter a number: 0 exits");
@@ -39,14 +41,16 @@ public class Main {
 		while(choice != "0") {
 			switch(choice) {
 			case "0":
+				System.out.println("Thank you for using Salukify");
+				System.exit(0);
 				break;
 			case "1":
 				//Search
 				System.out.println("What song would you like to search for?");
 				//Set user input to tempSong;
+				String tempSong = scan.nextLine();
 				//Use search method
 				//DECISION REQUIRED:  might return path or boolean
-				//lib.search(scan.next()); 
 				break;
 			
 			case "2" :
