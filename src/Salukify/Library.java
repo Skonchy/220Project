@@ -23,9 +23,6 @@ public class Library {
 			System.out.println(currentNode.getLabel() + " has children :" + currentNode.printChildren());
 			System.out.println("Enter the integer you want to go to:  0 exits");
 			where = input.nextInt();
-			//while(where.toUpperCase() != currentNode.children.elementAt(i).getLabel().toUpperCase() && i < currentNode.children.size()-1) {
-				//i++;
-			//}
 			if(where == 0) {
 				return;
 			}
@@ -38,7 +35,7 @@ public class Library {
 			System.out.println("This feature is coming soon!");
 		}
 		if(where == 9) {
-			this.root.remove();
+			currentNode.remove();
 		}
 	}//end explore
 	
@@ -239,7 +236,7 @@ public class Library {
 		}
 	}//end addChild
 		
-		public static class Node implements Iterator{
+		public static class Node implements Iterator<Node>{
 			private Node parent;
 			private String label; 
 			private int position = 0;
@@ -304,8 +301,9 @@ public class Library {
 			}
 			
 			public void remove() {
-				this.label = null;
-				this.children = null;
+				String temp = "";
+				this.label = temp;
+				this.children.removeAllElements();
 				System.out.println("Song removed!");
 			}//end remove
 			
